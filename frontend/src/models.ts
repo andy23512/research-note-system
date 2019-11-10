@@ -71,7 +71,7 @@ export type Query = {
 export type ResearchNoteMutationInput = {
   title: Scalars['String'],
   issue: Scalars['ID'],
-  content: Scalars['String'],
+  content?: Maybe<Scalars['String']>,
   id?: Maybe<Scalars['ID']>,
   clientMutationId?: Maybe<Scalars['String']>,
 };
@@ -88,7 +88,7 @@ export type ResearchNoteType = {
   id: Scalars['ID'],
   title: Scalars['String'],
   issue: IssueType,
-  content: Scalars['String'],
+  content?: Maybe<Scalars['String']>,
   isWritten: Scalars['Boolean'],
   writtenDate?: Maybe<Scalars['Date']>,
 };
