@@ -8,22 +8,6 @@ import { IssueType } from 'src/models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'frontend';
-  constructor(private apollo: Apollo) {
-  }
-
-  public ngOnInit() {
-    this.apollo.query<IssueType[]>({
-      query: gql`
-      query ISSUES {
-        issues {
-          id
-          date
-          link
-        }
-      }
-      `
-    }).subscribe(console.log);
-  }
 }
