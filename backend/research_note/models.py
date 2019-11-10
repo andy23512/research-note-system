@@ -13,10 +13,10 @@ class Issue(models.Model):
 
 class ResearchNote(models.Model):
     title = models.CharField(max_length=50)
-    issue = models.ForeignKey(Issue, on_delete=models.CASCADE)
+    issue = models.ForeignKey(Issue, related_name='research_notes', on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
     is_written = models.BooleanField()
-    written_date = models.DateField()
+    written_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.title
