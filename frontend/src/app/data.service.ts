@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { IssueType } from 'src/models';
+import { IssueType, ResearchNoteType } from 'src/models';
 import gql from 'graphql-tag';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class DataService {
   constructor(private apollo: Apollo) { }
 
   public watchQueryAllData() {
-    return this.apollo.watchQuery<IssueType[]>({
+    return this.apollo.watchQuery<{issues: IssueType[], researchNotes: ResearchNoteType[]}>({
       query: gql`
       query AllData {
         issues {

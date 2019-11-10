@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
-import { IssueType } from 'src/models';
 
 @Component({
   selector: 'app-root',
