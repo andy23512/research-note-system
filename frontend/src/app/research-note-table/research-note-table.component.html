@@ -4,4 +4,10 @@
   [columns]="columns"
   [scrollbarV]="true"
   [scrollbarH]="true"
-></ngx-datatable>
+>
+  <ng-template #issueLinkTemplate let-value="value">
+    <ng-container *ngIf="parseMd(value) as parsedMd">
+      <a [href]="parsedMd[2]" target="_blank">{{parsedMd[1]}}</a>
+    </ng-container>
+  </ng-template>
+</ngx-datatable>

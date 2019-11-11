@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { CreateIssueDialogComponent } from './create-issue-dialog/create-issue-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'frontend';
+
+  constructor(private dialog: MatDialog) {}
+  public openCreateIssueDialog() {
+    this.dialog.open(CreateIssueDialogComponent);
+  }
 }
