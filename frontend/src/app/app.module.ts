@@ -8,6 +8,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ResearchNoteTableComponent } from './research-note-table/research-note-table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MdRenderModule } from '@nvxme/ngx-md-render';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BrowserAnimationsModule,
     GraphQLModule,
     HttpClientModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    MdRenderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

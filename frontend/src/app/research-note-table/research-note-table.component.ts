@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IssueType, ResearchNoteType } from 'src/models';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-research-note-table',
@@ -14,6 +15,14 @@ export class ResearchNoteTableComponent implements OnInit {
     issues: IssueType[];
     researchNotes: ResearchNoteType[];
   }>;
+  public columns: TableColumn[] = [
+    { prop: 'title', name: 'Title' },
+    { prop: 'issue.link', name: 'Issue Link' },
+    { prop: 'issue.date', name: 'Issue Date' },
+    { prop: 'content', name: 'Content' },
+    { prop: 'isWritten', name: 'Is Written' },
+    { prop: 'writtenDate', name: 'Written Date' }
+  ];
 
   constructor(public data: DataService) {}
 
