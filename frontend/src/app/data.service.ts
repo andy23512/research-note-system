@@ -19,7 +19,6 @@ const allDataQuery = gql`
         link
       }
       content
-      isWritten
       writtenDate
     }
   }

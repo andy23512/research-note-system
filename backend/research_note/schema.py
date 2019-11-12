@@ -24,10 +24,10 @@ class Query:
     research_notes = graphene.List(ResearchNoteType)
 
     def resolve_issues(self, info, **kwargs):
-        return Issue.objects.prefetch_related('research_notes').all()
+        return Issue.objects.prefetch_related('research_notes').all().order_by('id')
 
     def resolve_research_notes(self, info, **kwargs):
-        return ResearchNote.objects.select_related('issue').all()
+        return ResearchNote.objects.select_related('issue').all().order_by('id')
 
 
 class IssueMutation(DjangoModelFormMutation):

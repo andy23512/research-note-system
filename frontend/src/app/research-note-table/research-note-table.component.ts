@@ -43,14 +43,14 @@ export class ResearchNoteTableComponent implements OnInit {
     this.columns = [
       { width: 50, cellTemplate: this.expandTemplate },
       { width: 50, name: 'Action', cellTemplate: this.actionTemplate },
-      { prop: 'title', name: 'Title' },
+      { width: 300, prop: 'title', name: 'Title' },
       {
+        width: 300,
         prop: 'issue.link',
         name: 'Issue Link',
         cellTemplate: this.issueLinkTemplate
       },
       { prop: 'issue.date', name: 'Issue Date' },
-      { prop: 'isWritten', name: 'Is Written' },
       { prop: 'writtenDate', name: 'Written Date' }
     ];
   }
