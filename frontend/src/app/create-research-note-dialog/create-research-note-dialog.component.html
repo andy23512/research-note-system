@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Create Research Note</h1>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input [formControlName]="'title'" matInput placeholder="title">
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <mat-label>Issue</mat-label>
+      <mat-select [formControlName]="'issue'">
+        <mat-option *ngFor="let issue of (issues$ | async)" [value]="issue.id">
+          {{issue.link}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <textarea matInput [formControlName]="'content'" cols="20" placeholder="content"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-flat-button type="submit" color="primary">Submit</button>
+    <button mat-flat-button type="button" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</form>

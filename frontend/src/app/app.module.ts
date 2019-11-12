@@ -9,12 +9,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResearchNoteTableComponent } from './research-note-table/research-note-table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MdRenderModule } from '@nvxme/ngx-md-render';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatDialogModule, MatDatepicker, MatDatepickerModule, MatFormFieldModule, MatInputModule, MatNativeDateModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatDialogModule,
+  MatDatepicker,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatSelectModule
+} from '@angular/material';
 import { CreateIssueDialogComponent } from './create-issue-dialog/create-issue-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateResearchNoteDialogComponent } from './create-research-note-dialog/create-research-note-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, ResearchNoteTableComponent, CreateIssueDialogComponent],
+  declarations: [
+    AppComponent,
+    ResearchNoteTableComponent,
+    CreateIssueDialogComponent,
+    CreateResearchNoteDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,10 +49,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
-  entryComponents: [CreateIssueDialogComponent],
+  entryComponents: [
+    CreateIssueDialogComponent,
+    CreateResearchNoteDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
