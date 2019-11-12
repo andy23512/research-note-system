@@ -1,10 +1,26 @@
 <ngx-datatable
   class="material"
+  #myTable
   [rows]="(data$ | async)?.researchNotes"
   [columns]="columns"
   [scrollbarV]="true"
   [scrollbarH]="true"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="50"
 >
+  <ngx-datatable-row-detail rowHeight="200" #detailRow (toggle)="onDetailToggle($event)">
+    <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+      <div style="padding-left:35px;">
+        <div>{{ row.content }}</div>
+      </div>
+    </ng-template>
+  </ngx-datatable-row-detail>
+  <ng-template #expandTemplate let-row="row" let-expanded="expanded">
+    <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
+      title="Expand/Collapse Row" (click)="toggleExpandRow(row)">
+    </a>
+  </ng-template>
   <ng-template #issueLinkTemplate let-value="value">
     <ng-container *ngIf="parseMd(value) as parsedMd">
       <a [href]="parsedMd[2]" target="_blank">{{parsedMd[1]}}</a>

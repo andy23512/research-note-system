@@ -12,3 +12,9 @@ class ResearchNoteForm(ModelForm):
     class Meta:
         model = ResearchNote
         fields = ('title', 'issue', 'content')
+
+
+class ResearchNoteWrittenForm(ModelForm):
+    class Meta:
+        model = ResearchNote
+        fields = ('written_date',)

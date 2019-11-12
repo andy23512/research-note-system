@@ -5,7 +5,7 @@ from graphene_django.types import DjangoObjectType
 from graphene_django.forms.mutation import DjangoModelFormMutation
 
 
-from .forms import IssueForm, ResearchNoteForm
+from .forms import IssueForm, ResearchNoteForm, ResearchNoteWrittenForm
 from .models import Issue, ResearchNote
 
 
@@ -44,6 +44,14 @@ class ResearchNoteMutation(DjangoModelFormMutation):
         form_class = ResearchNoteForm
 
 
+class ResearchNoteWrittenMutation(DjangoModelFormMutation):
+    research_note = Field(ResearchNoteType)
+
+    class Meta:
+        form_class = ResearchNoteWrittenForm
+
+
 class Mutations:
     update_issue = IssueMutation.Field()
     update_research_note = ResearchNoteMutation.Field()
+    update_research_note_written = ResearchNoteWrittenMutation.Field()

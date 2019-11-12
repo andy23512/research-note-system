@@ -50,6 +50,7 @@ export type Mutations = {
    __typename?: 'Mutations',
   updateIssue?: Maybe<IssueMutationPayload>,
   updateResearchNote?: Maybe<ResearchNoteMutationPayload>,
+  updateResearchNoteWritten?: Maybe<ResearchNoteWrittenMutationPayload>,
 };
 
 
@@ -60,6 +61,11 @@ export type MutationsUpdateIssueArgs = {
 
 export type MutationsUpdateResearchNoteArgs = {
   input: ResearchNoteMutationInput
+};
+
+
+export type MutationsUpdateResearchNoteWrittenArgs = {
+  input: ResearchNoteWrittenMutationInput
 };
 
 export type Query = {
@@ -91,6 +97,19 @@ export type ResearchNoteType = {
   content?: Maybe<Scalars['String']>,
   isWritten: Scalars['Boolean'],
   writtenDate?: Maybe<Scalars['Date']>,
+};
+
+export type ResearchNoteWrittenMutationInput = {
+  writtenDate?: Maybe<Scalars['Date']>,
+  id?: Maybe<Scalars['ID']>,
+  clientMutationId?: Maybe<Scalars['String']>,
+};
+
+export type ResearchNoteWrittenMutationPayload = {
+   __typename?: 'ResearchNoteWrittenMutationPayload',
+  researchNote?: Maybe<ResearchNoteType>,
+  errors?: Maybe<Array<Maybe<ErrorType>>>,
+  clientMutationId?: Maybe<Scalars['String']>,
 };
 
 

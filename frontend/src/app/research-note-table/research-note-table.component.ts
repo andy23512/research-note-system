@@ -13,13 +13,17 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./research-note-table.component.sass']
 })
 export class ResearchNoteTableComponent implements OnInit {
+  @ViewChild('myTable', { static: true }) table: any;
   @ViewChild('issueLinkTemplate', { static: true })
   public issueLinkTemplate: TemplateRef<any>;
+  @ViewChild('expandTemplate', { static: true })
+  public expandTemplate: TemplateRef<any>;
   public data$: Observable<{
     issues: IssueType[];
     researchNotes: ResearchNoteType[];
   }>;
   public columns: TableColumn[];
+  public expanded: any = {};
 
   constructor(
     private data: DataService,
@@ -32,6 +36,7 @@ export class ResearchNoteTableComponent implements OnInit {
       .watchQueryAllData()
       .valueChanges.pipe(map(d => d.data));
     this.columns = [
+      { width: 50, cellTemplate: this.expandTemplate },
       { prop: 'title', name: 'Title' },
       {
         prop: 'issue.link',
@@ -39,7 +44,6 @@ export class ResearchNoteTableComponent implements OnInit {
         cellTemplate: this.issueLinkTemplate
       },
       { prop: 'issue.date', name: 'Issue Date' },
-      { prop: 'content', name: 'Content' },
       { prop: 'isWritten', name: 'Is Written' },
       { prop: 'writtenDate', name: 'Written Date' }
     ];
@@ -47,5 +51,9 @@ export class ResearchNoteTableComponent implements OnInit {
 
   public parseMd(markdown: string) {
     return markdown.match(/\[(.*)\]\((.*)\)/);
+  }
+
+  public toggleExpandRow(row) {
+    this.table.rowDetail.toggleExpandRow(row);
   }
 }
