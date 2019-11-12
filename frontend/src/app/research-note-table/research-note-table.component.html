@@ -9,13 +9,18 @@
   [footerHeight]="50"
   [rowHeight]="50"
 >
-  <ngx-datatable-row-detail rowHeight="200" #detailRow (toggle)="onDetailToggle($event)">
+  <ngx-datatable-row-detail rowHeight="200" #detailRow>
     <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
       <div style="padding-left:35px;">
         <div>{{ row.content }}</div>
       </div>
     </ng-template>
   </ngx-datatable-row-detail>
+  <ng-template #actionTemplate let-row="row">
+    <button mat-icon-button class="small" (click)="openUpdateResearchNoteWrittenDialog(row.id)">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </ng-template>
   <ng-template #expandTemplate let-row="row" let-expanded="expanded">
     <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded"
       title="Expand/Collapse Row" (click)="toggleExpandRow(row)">

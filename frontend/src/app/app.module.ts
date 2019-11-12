@@ -24,13 +24,15 @@ import {
 import { CreateIssueDialogComponent } from './create-issue-dialog/create-issue-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateResearchNoteDialogComponent } from './create-research-note-dialog/create-research-note-dialog.component';
+import { UpdateResearchNoteWrittenDialogComponent } from './update-research-note-written-dialog/update-research-note-written-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResearchNoteTableComponent,
     CreateIssueDialogComponent,
-    CreateResearchNoteDialogComponent
+    CreateResearchNoteDialogComponent,
+    UpdateResearchNoteWrittenDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { CreateResearchNoteDialogComponent } from './create-research-note-dialog
   providers: [],
   entryComponents: [
     CreateIssueDialogComponent,
-    CreateResearchNoteDialogComponent
+    CreateResearchNoteDialogComponent,
+    UpdateResearchNoteWrittenDialogComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,6 @@ class ResearchNote(models.Model):
     title = models.CharField(max_length=50)
     issue = models.ForeignKey(Issue, related_name='research_notes', on_delete=models.CASCADE)
     content = models.CharField(max_length=1000, blank=True, null=True)
-    is_written = models.BooleanField(blank=True, default=False)
     written_date = models.DateField(blank=True, null=True)
 
     def __str__(self):

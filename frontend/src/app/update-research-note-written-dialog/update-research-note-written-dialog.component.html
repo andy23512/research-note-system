@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Update Research Note Written</h1>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input [formControlName]="'writtenDate'" matInput [matDatepicker]="picker" placeholder="Written Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-flat-button type="submit" color="primary">Submit</button>
+    <button mat-flat-button type="button" mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</form>

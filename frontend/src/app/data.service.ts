@@ -83,4 +83,28 @@ export class DataService {
       }
     });
   }
+
+  public updateResearchNoteWritten(data: any) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateResearchNoteWritten(
+          $input: ResearchNoteWrittenMutationInput!
+        ) {
+          updateResearchNoteWritten(input: $input) {
+            researchNote {
+              id
+            }
+          }
+        }
+      `,
+      refetchQueries: [
+        {
+          query: allDataQuery
+        }
+      ],
+      variables: {
+        input: data
+      }
+    });
+  }
 }

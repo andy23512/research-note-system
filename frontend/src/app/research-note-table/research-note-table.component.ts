@@ -6,6 +6,8 @@ import { IssueType, ResearchNoteType } from 'src/models';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material';
+import { UpdateResearchNoteWrittenDialogComponent } from '../update-research-note-written-dialog/update-research-note-written-dialog.component';
 
 @Component({
   selector: 'app-research-note-table',
@@ -14,6 +16,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ResearchNoteTableComponent implements OnInit {
   @ViewChild('myTable', { static: true }) table: any;
+  @ViewChild('actionTemplate', { static: true })
+  public actionTemplate: TemplateRef<any>;
   @ViewChild('issueLinkTemplate', { static: true })
   public issueLinkTemplate: TemplateRef<any>;
   @ViewChild('expandTemplate', { static: true })
@@ -28,7 +32,8 @@ export class ResearchNoteTableComponent implements OnInit {
   constructor(
     private data: DataService,
     private mdRenderService: MdRenderService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -37,6 +42,7 @@ export class ResearchNoteTableComponent implements OnInit {
       .valueChanges.pipe(map(d => d.data));
     this.columns = [
       { width: 50, cellTemplate: this.expandTemplate },
+      { width: 50, name: 'Action', cellTemplate: this.actionTemplate },
       { prop: 'title', name: 'Title' },
       {
         prop: 'issue.link',
@@ -55,5 +61,9 @@ export class ResearchNoteTableComponent implements OnInit {
 
   public toggleExpandRow(row) {
     this.table.rowDetail.toggleExpandRow(row);
+  }
+
+  public openUpdateResearchNoteWrittenDialog(id: string) {
+    this.dialog.open(UpdateResearchNoteWrittenDialogComponent, { data: id });
   }
 }

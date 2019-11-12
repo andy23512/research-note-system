@@ -95,7 +95,6 @@ export type ResearchNoteType = {
   title: Scalars['String'],
   issue: IssueType,
   content?: Maybe<Scalars['String']>,
-  isWritten: Scalars['Boolean'],
   writtenDate?: Maybe<Scalars['Date']>,
 };
 
