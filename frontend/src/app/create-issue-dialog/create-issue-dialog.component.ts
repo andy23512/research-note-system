@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DataService } from '../data.service';
 import { IssueType } from 'src/models';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-create-issue-dialog',
@@ -11,7 +12,10 @@ import { IssueType } from 'src/models';
 export class CreateIssueDialogComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dialogRef: MatDialogRef<CreateIssueDialogComponent>,
+    private dataService: DataService
+  ) {}
 
   public ngOnInit() {
     this.form = new FormGroup({
@@ -34,6 +38,8 @@ export class CreateIssueDialogComponent implements OnInit {
         ).substr(-2)}-${('0' + (value.getDate() + 1)).substr(-2)}`;
       }
     });
-    this.dataService.createIssue(convertedData as IssueType).subscribe();
+    this.dataService.createIssue(convertedData as IssueType).subscribe(() => {
+      this.dialogRef.close();
+    });
   }
 }
