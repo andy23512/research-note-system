@@ -1,14 +1,16 @@
-<mat-toolbar color="primary">
-  <span>Research Note Manager</span>
-  <span class="spacer"></span>
-  <button mat-flat-button (click)="openCreateIssueDialog()">
-    <mat-icon>add</mat-icon>
-    Create Issue
-  </button>
-  <button mat-flat-button (click)="openCreateResearchNoteDialog()">
-    <mat-icon>add</mat-icon>
-    Create Research Note
-  </button>
-</mat-toolbar>
-<app-research-note-table>
-</app-research-note-table>
+<div class="mat-typography app-frame mat-app-background">
+  <mat-toolbar color="primary">
+    <span>Research Note Manager</span>
+    <span class="spacer"></span>
+    <button mat-flat-button (click)="openCreateIssueDialog()">
+      <mat-icon>add</mat-icon>
+      Create Issue
+    </button>
+    <button mat-flat-button (click)="openCreateResearchNoteDialog()">
+      <mat-icon>add</mat-icon>
+      Create Research Note
+    </button>
+  </mat-toolbar>
+  <app-research-note-table>
+  </app-research-note-table>
+</div>

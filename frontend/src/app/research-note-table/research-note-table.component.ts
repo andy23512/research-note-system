@@ -20,6 +20,8 @@ export class ResearchNoteTableComponent implements OnInit {
   public actionTemplate: TemplateRef<any>;
   @ViewChild('issueLinkTemplate', { static: true })
   public issueLinkTemplate: TemplateRef<any>;
+  @ViewChild('haveContentTemplate', { static: true })
+  public haveContentTemplate: TemplateRef<any>;
   @ViewChild('expandTemplate', { static: true })
   public expandTemplate: TemplateRef<any>;
   public data$: Observable<{
@@ -51,6 +53,12 @@ export class ResearchNoteTableComponent implements OnInit {
         cellTemplate: this.issueLinkTemplate
       },
       { prop: 'issue.date', name: 'Issue Date' },
+      {
+        width: 70,
+        prop: 'content',
+        name: 'Have Content',
+        cellTemplate: this.haveContentTemplate
+      },
       { prop: 'writtenDate', name: 'Written Date' }
     ];
   }

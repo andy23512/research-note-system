@@ -31,4 +31,7 @@
       <a [href]="parsedMd[2]" target="_blank">{{parsedMd[1]}}</a>
     </ng-container>
   </ng-template>
+  <ng-template #haveContentTemplate let-value="value">
+    <mat-icon>{{value ? 'done' : ''}}</mat-icon>
+  </ng-template>
 </ngx-datatable>
