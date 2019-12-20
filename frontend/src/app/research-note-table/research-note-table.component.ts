@@ -7,7 +7,9 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 import { MdRenderService } from '@nvxme/ngx-md-render';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
+// tslint:disable-next-line: max-line-length
 import { UpdateResearchNoteWrittenDialogComponent } from '../update-research-note-written-dialog/update-research-note-written-dialog.component';
+import { CreateResearchNoteDialogComponent } from '../create-research-note-dialog/create-research-note-dialog.component';
 
 @Component({
   selector: 'app-research-note-table',
@@ -44,7 +46,7 @@ export class ResearchNoteTableComponent implements OnInit {
       .valueChanges.pipe(map(d => d.data));
     this.columns = [
       { width: 50, cellTemplate: this.expandTemplate },
-      { width: 50, name: 'Action', cellTemplate: this.actionTemplate },
+      { width: 75, name: 'Action', cellTemplate: this.actionTemplate },
       { width: 300, prop: 'title', name: 'Title' },
       {
         width: 300,
@@ -63,15 +65,28 @@ export class ResearchNoteTableComponent implements OnInit {
     ];
   }
 
+  public md2html(content: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(
+      this.mdRenderService.render(content)
+    );
+  }
+
   public parseMd(markdown: string) {
     return markdown.match(/\[(.*)\]\((.*)\)/);
   }
 
-  public toggleExpandRow(row) {
+  public toggleExpandRow(row: ResearchNoteType) {
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   public openUpdateResearchNoteWrittenDialog(id: string) {
     this.dialog.open(UpdateResearchNoteWrittenDialogComponent, { data: id });
+  }
+
+  public openUpdateResearchNoteDialog(row: ResearchNoteType) {
+    this.dialog.open(CreateResearchNoteDialogComponent, {
+      data: row,
+      width: '80vw'
+    });
   }
 }

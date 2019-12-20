@@ -11,14 +11,16 @@
 >
   <ngx-datatable-row-detail rowHeight="200" #detailRow>
     <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-      <div style="padding-left:35px;width: 80vw;word-break:break-all;white-space:normal;">
-        {{ row.content }}
+      <div style="padding-left:35px;width: 80vw;word-break:break-all;white-space:normal;" [innerHTML]="md2html(row.content)">
       </div>
     </ng-template>
   </ngx-datatable-row-detail>
   <ng-template #actionTemplate let-row="row">
-    <button mat-icon-button class="small" (click)="openUpdateResearchNoteWrittenDialog(row.id)">
+    <button mat-icon-button class="small" (click)="openUpdateResearchNoteDialog(row)">
       <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button class="small" (click)="openUpdateResearchNoteWrittenDialog(row.id)">
+      <mat-icon>done</mat-icon>
     </button>
   </ng-template>
   <ng-template #expandTemplate let-row="row" let-expanded="expanded">

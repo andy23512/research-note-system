@@ -24,7 +24,9 @@ import {
 import { CreateIssueDialogComponent } from './create-issue-dialog/create-issue-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateResearchNoteDialogComponent } from './create-research-note-dialog/create-research-note-dialog.component';
+// tslint:disable-next-line: max-line-length
 import { UpdateResearchNoteWrittenDialogComponent } from './update-research-note-written-dialog/update-research-note-written-dialog.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,8 @@ import { UpdateResearchNoteWrittenDialogComponent } from './update-research-note
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    CodemirrorModule
   ],
   providers: [],
   entryComponents: [

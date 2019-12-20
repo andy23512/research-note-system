@@ -14,9 +14,11 @@
       </mat-select>
     </mat-form-field>
     <br/>
-    <mat-form-field>
-      <textarea matInput [formControlName]="'content'" rows="20" placeholder="content"></textarea>
-    </mat-form-field>
+    <ngx-codemirror [formControlName]="'content'" [options]="{
+      theme: 'material',
+      mode: 'markdown',
+      lineWrapping: true
+    }"></ngx-codemirror>
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-flat-button type="submit" color="primary">Submit</button>

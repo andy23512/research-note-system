@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { DataService } from '../data.service';
-import { IssueType } from 'src/models';
+import { IssueType, ResearchNoteType } from 'src/models';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-create-research-note-dialog',
@@ -16,6 +16,7 @@ export class CreateResearchNoteDialogComponent implements OnInit {
   public issues$: Observable<IssueType[]>;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public researchNote: ResearchNoteType,
     private dialogRef: MatDialogRef<CreateResearchNoteDialogComponent>,
     private dataService: DataService
   ) {}
@@ -25,15 +26,27 @@ export class CreateResearchNoteDialogComponent implements OnInit {
       .watchQueryAllData()
       .valueChanges.pipe(map(data => data.data.issues));
     this.form = new FormGroup({
-      title: new FormControl(''),
-      issue: new FormControl(''),
-      content: new FormControl('')
+      title: new FormControl(this.researchNote ? this.researchNote.title : ''),
+      issue: new FormControl(
+        this.researchNote ? this.researchNote.issue.id : ''
+      ),
+      content: new FormControl(
+        this.researchNote ? this.researchNote.content : ''
+      )
     });
   }
 
   public onSubmit() {
-    this.dataService.createResearchNote(this.form.value).subscribe(() => {
-      this.dialogRef.close();
-    });
+    const additionalData = this.researchNote
+      ? { id: this.researchNote.id }
+      : {};
+    this.dataService
+      .createResearchNote({
+        ...this.form.value,
+        ...additionalData
+      })
+      .subscribe(() => {
+        this.dialogRef.close();
+      });
   }
 }
