@@ -36,7 +36,7 @@
     "apollo-cache-inmemory": "^1.6.0",
     "apollo-client": "^2.6.0",
     "apollo-link": "^1.2.11",
-    "codemirror": "^5.49.2",
+    "codemirror": "^5.58.2",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.0",
     "hammerjs": "^2.0.8",
